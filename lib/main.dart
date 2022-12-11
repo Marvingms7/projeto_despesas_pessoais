@@ -50,17 +50,37 @@ class MyHomePage extends StatelessWidget {
                       border: Border.all(color: Colors.purple, width: 2),
                     ),
                     padding: const EdgeInsets.all(10),
-                    child: Text(tr.value.toString(),
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      color: Colors.purple,
-                    ),
+                    child: Text(
+                      tr.value.toString(),
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.purple,
+                      ),
                     ),
                   ),
                   Column(
-                    children: [Text(tr.title), Text(tr.data.toString())],
-                  )
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        child: Text(
+                          tr.title,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        child: Text(
+                          tr.data.toString(),
+                          style: const TextStyle(
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             );
