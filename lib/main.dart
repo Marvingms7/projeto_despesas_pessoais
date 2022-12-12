@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:projeto_despesas_pessoais/models/transaction.dart';
 
 void main() {
@@ -32,59 +33,64 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           const Card(
             elevation: 5,
             child: Text('Grafico'),
           ),
           Column(
-              children: _transactions.map((tr) {
-            return Card(
-              child: Row(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 10),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.purple, width: 2),
-                    ),
-                    padding: const EdgeInsets.all(10),
-                    child: Text(
-                      'R\$${tr.value}',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        color: Colors.purple,
+            children: _transactions.map((tr) {
+              return Card(
+                child: Row(
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 15, vertical: 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.purple, width: 2),
+                      ),
+                      padding: const EdgeInsets.all(10),
+                      child: Text(
+                        'R\$${tr.value}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.purple,
+                        ),
                       ),
                     ),
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: Text(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
                           tr.title,
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 16,
                           ),
                         ),
-                      ),
-                      Container(
-                        child: Text(
-                          tr.data.toString(),
+                        Text(
+                          DateFormat('d MMM y').format(tr.data),
                           style: const TextStyle(
                             color: Colors.grey,
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
+              );
+            }).toList(),
+          ),
+          Card(
+            elevation: 5,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Column(
+                children: [TextField(), TextField()],
               ),
-            );
-          }).toList()),
+            ),
+          )
         ],
       ),
     );
