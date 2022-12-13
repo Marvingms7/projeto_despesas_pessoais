@@ -88,17 +88,23 @@ class MyHomePage extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
-                  TextField(
+                  const TextField(
                     decoration: InputDecoration(labelText: 'Titulo'),
                   ),
-                  TextField(
+                  const TextField(
                     decoration: InputDecoration(labelText: 'Valor R\$'),
                   ),
-                  ElevatedButton(onPressed: () {}, child: const Text('Enviar'))
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0)))),
+                    child: const Text('Enviar'),
+                  ),
                 ],
               ),
             ),
-          )
+          ),
         ],
       ),
     );
