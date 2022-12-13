@@ -97,9 +97,11 @@ class MyHomePage extends StatelessWidget {
                   ElevatedButton(
                     onPressed: () {},
                     style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.purple),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16.0)))),
-                    child: const Text('Enviar'),
+                    child: const Text('Nova Transação'),
                   ),
                 ],
               ),
