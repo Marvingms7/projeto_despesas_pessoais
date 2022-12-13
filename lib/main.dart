@@ -87,7 +87,15 @@ class MyHomePage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(10.0),
               child: Column(
-                children: [TextField(), TextField()],
+                children: [
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Titulo'),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(labelText: 'Valor R\$'),
+                  ),
+                  ElevatedButton(onPressed: () {}, child: const Text('Enviar'))
+                ],
               ),
             ),
           )
