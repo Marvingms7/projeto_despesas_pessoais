@@ -18,11 +18,22 @@ class ExpensesApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
 
+  final titleController = TextEditingController();
+  final valueController = TextEditingController();
+
   final _transactions = [
     Transaction(
-        id: 't1', title: 'Novo Tênis', value: 250.0, data: DateTime.now()),
+      id: 't1',
+      title: 'Novo Tênis',
+      value: 250.0,
+      data: DateTime.now(),
+    ),
     Transaction(
-        id: 't2', title: 'Nova Camisa', value: 39.90, data: DateTime.now()),
+      id: 't2',
+      title: 'Nova Camisa',
+      value: 39.90,
+      data: DateTime.now(),
+    ),
   ];
 
   @override
@@ -88,14 +99,19 @@ class MyHomePage extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Column(
                 children: [
-                  const TextField(
-                    decoration: InputDecoration(labelText: 'Titulo'),
+                  TextField(
+                    controller: titleController,
+                    decoration: const InputDecoration(labelText: 'Titulo'),
                   ),
-                  const TextField(
-                    decoration: InputDecoration(labelText: 'Valor R\$'),
+                  TextField(
+                    controller: valueController,
+                    decoration: const InputDecoration(labelText: 'Valor R\$'),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      print(titleController.text);
+                      print(valueController.text);
+                    },
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.purple),
