@@ -16,7 +16,7 @@ class TransactionUser extends StatefulWidget {
 class _TransactionUserState extends State<TransactionUser> {
   @override
   Widget build(BuildContext context) {
-    final _transactions = [
+    late final List<Transaction> _transactions = [
       Transaction(
         id: 't1',
         title: 'Novo Tênis',
@@ -30,6 +30,11 @@ class _TransactionUserState extends State<TransactionUser> {
         data: DateTime.now(),
       ),
     ];
-    return Container();
+    return Column(
+      children: [
+        TransactionList(_transactions.cast<TransactionList>()),
+        TransactionForm(),
+      ],
+    );
   }
 }
