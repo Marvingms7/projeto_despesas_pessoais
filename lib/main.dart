@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_despesas_pessoais/components/transaction_form.dart';
-import 'package:projeto_despesas_pessoais/components/transactions_list.dart';
-import 'package:projeto_despesas_pessoais/models/transaction.dart';
-
 import 'components/transaction_user.dart';
 
 void main() {
@@ -10,7 +6,7 @@ void main() {
 }
 
 class ExpensesApp extends StatelessWidget {
-  const ExpensesApp({super.key});
+  const ExpensesApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +15,7 @@ class ExpensesApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key});
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +25,14 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          const Card(
-            elevation: 5,
-            child: Text('Grafico'),
+        children: const [
+          SizedBox(
+            child: Card(
+              elevation: 5,
+              child: Text('Grafico'),
+            ),
           ),
-          const TransactionUser(),
+          TransactionUser(),
         ],
       ),
     );
