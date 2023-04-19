@@ -25,11 +25,14 @@ class _TransactionUserState extends State<TransactionUser> {
       data: DateTime.now(),
     ),
   ];
+
+  _addTransaction(String title, double value) {}
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        TransactionList(_transactions.cast<TransactionList>()),
+        TransactionList(_transactions),
         const TransactionForm(),
       ],
     );

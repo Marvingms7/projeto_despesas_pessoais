@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
   const TransactionList(this.transactions, {Key? key}) : super(key: key);
 
-  final List<TransactionList> transactions;
+  final List<Transaction> transactions;
 
   @override
   Widget build(BuildContext context) {
