@@ -26,8 +26,9 @@ class TransactionForm extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                print(titleController.text);
-                print(valueController.text);
+                final title = titleController.text;
+                final value = double.tryParse(valueController.text) ?? 0.0;
+                onSubmit(title, value);
               },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.purple),
