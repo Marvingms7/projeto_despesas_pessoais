@@ -23,19 +23,17 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Despesas pessoais'),
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: const [
-            SizedBox(
-              child: Card(
-                elevation: 5,
-                child: Text('Grafico'),
-              ),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: const [
+          SizedBox(
+            child: Card(
+              elevation: 5,
+              child: Text('Grafico'),
             ),
-            TransactionUser(),
-          ],
-        ),
+          ),
+          TransactionUser(),
+        ],
       ),
     );
   }
