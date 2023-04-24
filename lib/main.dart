@@ -2,10 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:projeto_despesas_pessoais/components/transaction_form.dart';
-
-import 'components/transaction_form.dart';
 import 'components/transactions_list.dart';
 import '../models/transaction.dart';
+
 void main() {
   runApp(const ExpensesApp());
 }
@@ -15,7 +14,17 @@ class ExpensesApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: MyHomePage());
+    final ThemeData tema = ThemeData();
+
+    return MaterialApp(
+      home: const MyHomePage(),
+      theme: tema.copyWith(
+        colorScheme: tema.colorScheme.copyWith(
+          primary: Colors.deepPurple,
+          secondary: Colors.amber,
+        ),
+      ),
+    );
   }
 }
 
@@ -27,7 +36,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   final _transactions = [
     Transaction(
       id: 't1',
@@ -43,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
   ];
 
-    _addTransaction(String title, double value) {
+  _addTransaction(String title, double value) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
@@ -51,16 +59,21 @@ class _MyHomePageState extends State<MyHomePage> {
       data: DateTime.now(),
     );
 
-    setState(() {
-      _transactions.add(newTransaction);
-    });
+    setState(
+      () {
+        _transactions.add(newTransaction);
+      },
+    );
     Navigator.of(context).pop();
   }
 
-  _openTransactionFormModal(BuildContext context){
-    showModalBottomSheet(context: context, builder: (_){
-      return TransactionForm(_addTransaction);
-    });
+  _openTransactionFormModal(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (_) {
+        return TransactionForm(_addTransaction);
+      },
+    );
   }
 
   @override
@@ -69,14 +82,16 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: const Text('Despesas pessoais'),
         actions: [
-          IconButton(icon: const Icon(Icons.add), onPressed: () => _openTransactionFormModal(context),
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: () => _openTransactionFormModal(context),
           ),
         ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          children:  [
+          children: [
             const SizedBox(
               child: Card(
                 elevation: 5,
@@ -84,11 +99,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             TransactionList(_transactions),
-          ],         
+          ],
         ),
-      ),     
-      floatingActionButton: FloatingActionButton(onPressed: () => _openTransactionFormModal(context),
-      child: const Icon(Icons.add),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _openTransactionFormModal(context),
+        child: const Icon(Icons.add),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
