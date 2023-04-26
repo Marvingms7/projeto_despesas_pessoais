@@ -36,6 +36,7 @@ class ExpensesApp extends StatelessWidget {
             fontFamily: 'OpenSans',
             fontSize: 20,
             fontWeight: FontWeight.bold,
+            color: Colors.white,
           ),
         ),
       ),
@@ -51,19 +52,19 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo Tênis',
-      value: 250.0,
-      data: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Nova Camisa',
-      value: 39.90,
-      data: DateTime.now(),
-    ),
+  final List<Transaction> _transactions = [
+    //Transaction(
+    //id: 't1',
+    //title: 'Novo Tênis',
+    //value: 250.0,
+    //data: DateTime.now(),
+    //),
+    //Transaction(
+    //id: 't2',
+    //title: 'Nova Camisa',
+    //value: 39.90,
+    //data: DateTime.now(),
+    //),
   ];
 
   _addTransaction(String title, double value) {
@@ -95,7 +96,10 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Despesas pessoais'),
+        title: const Text(
+          'Despesas pessoais',
+          style: TextStyle(color: Colors.white),
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.add),
