@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:projeto_despesas_pessoais/models/transaction.dart';
 
 class Chart extends StatelessWidget {
@@ -8,7 +9,16 @@ class Chart extends StatelessWidget {
 
   List<Map<String, Object>> get groupedTransactions {
     return List.generate(7, (index) {
-      return {'day': 'T', 'value': 59.50};
+      final weekDay = DateTime.now().subtract(
+        Duration(days: index),
+      );
+
+      double totalSun = 0.0;
+
+      return {
+        'day': DateFormat.E().format(weekDay)[0],
+        'value': 59.50,
+      };
     });
   }
 
