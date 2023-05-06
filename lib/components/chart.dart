@@ -27,7 +27,7 @@ class Chart extends StatelessWidget {
 
       return {
         'day': DateFormat.E().format(weekDay)[0],
-        'value': 59.50,
+        'value': totalSun,
       };
     });
   }
