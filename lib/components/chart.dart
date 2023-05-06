@@ -15,6 +15,16 @@ class Chart extends StatelessWidget {
 
       double totalSun = 0.0;
 
+      for(var i = 0; i < recentTransaction.length; i++){
+        bool sameDay = recentTransaction[i].data.day == weekDay.day;
+        bool sameMonth = recentTransaction[i].data.month == weekDay.month;
+        bool sameYear = recentTransaction[i].data.year == weekDay.year;
+        if(sameDay && sameMonth && sameYear){
+          totalSun += recentTransaction[i].value;
+        }
+      }
+
+
       return {
         'day': DateFormat.E().format(weekDay)[0],
         'value': 59.50,
