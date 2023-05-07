@@ -25,6 +25,11 @@ class Chart extends StatelessWidget {
       }
 
 
+
+      print(DateFormat.E().format(weekDay)[0]);
+      print(totalSun);
+
+
       return {
         'day': DateFormat.E().format(weekDay)[0],
         'value': totalSun,
@@ -34,6 +39,7 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    groupedTransactions;
     return const Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
