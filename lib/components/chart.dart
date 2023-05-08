@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 import 'package:projeto_despesas_pessoais/models/transaction.dart';
 
 class Chart extends StatelessWidget {
-  const Chart({super.key, required this.recentTransaction});
+  const Chart(this.recentTransaction, {Key? key}) : super(key: key);
 
   final List<Transaction> recentTransaction;
 
@@ -15,20 +15,17 @@ class Chart extends StatelessWidget {
 
       double totalSun = 0.0;
 
-      for(var i = 0; i < recentTransaction.length; i++){
+      for (var i = 0; i < recentTransaction.length; i++) {
         bool sameDay = recentTransaction[i].data.day == weekDay.day;
         bool sameMonth = recentTransaction[i].data.month == weekDay.month;
         bool sameYear = recentTransaction[i].data.year == weekDay.year;
-        if(sameDay && sameMonth && sameYear){
+        if (sameDay && sameMonth && sameYear) {
           totalSun += recentTransaction[i].value;
         }
       }
 
-
-
       print(DateFormat.E().format(weekDay)[0]);
       print(totalSun);
-
 
       return {
         'day': DateFormat.E().format(weekDay)[0],
@@ -42,11 +39,11 @@ class Chart extends StatelessWidget {
     groupedTransactions;
     return Card(
       elevation: 6,
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Row(
-        children: [
-          groupedTransactions.map().toList(),
-        ],
+        children: groupedTransactions.map((tr) {
+          return Text('${tr['day']}: ${tr['value']}');
+        }).toList(),
       ),
     );
   }

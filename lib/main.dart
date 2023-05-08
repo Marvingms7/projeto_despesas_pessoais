@@ -68,9 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
       id: 't3',
       title: 'calça social',
       value: 80.0,
-      data: DateTime.now().subtract(const Duration(
-        days: 30,
-      )),
+      data: DateTime.now().subtract(const Duration(days: 30)),
     ),
   ];
 
@@ -128,7 +126,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Chart(recentTransaction: _recentTransaction),
+            Chart(_recentTransaction),
             TransactionList(_transactions),
           ],
         ),
