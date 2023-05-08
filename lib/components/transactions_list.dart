@@ -44,7 +44,8 @@ class TransactionList extends StatelessWidget {
                         margin: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 10),
                         decoration: BoxDecoration(
-                          border: Border.all(color: Colors.purple, width: 2),
+                          border:
+                              Border.all(color: Colors.deepPurple, width: 2),
                         ),
                         padding: const EdgeInsets.all(10),
                         child: Text(
@@ -52,7 +53,7 @@ class TransactionList extends StatelessWidget {
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 20,
-                            color: Colors.purple,
+                            color: Colors.deepPurple,
                           ),
                         ),
                       ),
