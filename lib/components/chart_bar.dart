@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class ChartBar extends StatelessWidget {
   const ChartBar(
@@ -17,7 +15,14 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        FittedBox(child: Text(value.toStringAsFixed(2))),
+        Container(
+          height: 20,
+          child: FittedBox(
+            child: Text(
+              value.toStringAsFixed(2),
+            ),
+          ),
+        ),
         const SizedBox(
           height: 5,
         ),
