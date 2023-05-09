@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class TransactionForm extends StatefulWidget {
   const TransactionForm(this.onSubmit, {Key? key}) : super(key: key);
@@ -10,13 +11,13 @@ class TransactionForm extends StatefulWidget {
 }
 
 class _TransactionFormState extends State<TransactionForm> {
-  final titleController = TextEditingController();
-
-  final valueController = TextEditingController();
+  final _titleController = TextEditingController();
+  final _valueController = TextEditingController();
+  DateTime? _selectedDate;
 
   _submitForm() {
-    final title = titleController.text;
-    final value = double.tryParse(valueController.text) ?? 0.0;
+    final title = _titleController.text;
+    final value = double.tryParse(_valueController.text) ?? 0.0;
 
     if (title.isEmpty || value <= 0) {
       return;
@@ -30,6 +31,16 @@ class _TransactionFormState extends State<TransactionForm> {
       initialDate: DateTime.now(),
       firstDate: DateTime(2010),
       lastDate: DateTime.now(),
+    ).then(
+      (pickedDate) {
+        if (pickedDate == null) {
+          return;
+        }
+
+        setState(() {
+          _selectedDate = pickedDate;
+        });
+      },
     );
   }
 
@@ -42,12 +53,12 @@ class _TransactionFormState extends State<TransactionForm> {
         child: Column(
           children: [
             TextField(
-              controller: titleController,
+              controller: _titleController,
               decoration: const InputDecoration(labelText: 'Titulo'),
               onSubmitted: (_) => _submitForm(),
             ),
             TextField(
-              controller: valueController,
+              controller: _valueController,
               keyboardType:
                   const TextInputType.numberWithOptions(decimal: true),
               decoration: const InputDecoration(labelText: 'Valor R\$'),
@@ -55,7 +66,12 @@ class _TransactionFormState extends State<TransactionForm> {
             ),
             Row(
               children: [
-                const Text('Nenhuma data selecionada!'),
+                // ignore: unnecessary_null_comparison
+                Text(
+                  _selectedDate == null
+                      ? 'Nenhuma data selecionada'
+                      : 'Data selecionada: ${DateFormat('dd/MM/y').format(_selectedDate!)}',
+                ),
                 TextButton(
                   onPressed: _showDatePicker,
                   style: TextButton.styleFrom(
@@ -64,13 +80,22 @@ class _TransactionFormState extends State<TransactionForm> {
                 )
               ],
             ),
-            ElevatedButton(
-              onPressed: _submitForm,
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.deepPurple),
-                  shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(16.0)))),
-              child: const Text('Nova Transação'),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 35),
+                  child: ElevatedButton(
+                    onPressed: _submitForm,
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all(Colors.deepPurple),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16.0)))),
+                    child: const Text('Nova Transação'),
+                  ),
+                ),
+              ],
             ),
           ],
         ),
