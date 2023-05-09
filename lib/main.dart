@@ -30,6 +30,9 @@ class ExpensesApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
+          labelLarge: const TextStyle(
+            color: Colors.white
+          )
         ),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
@@ -112,7 +115,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Despesas pessoais',
+          'Finanças',
           style: TextStyle(color: Colors.white),
         ),
         actions: [
