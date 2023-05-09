@@ -24,16 +24,13 @@ class ExpensesApp extends StatelessWidget {
           secondary: Colors.amber,
         ),
         textTheme: tema.textTheme.copyWith(
-          titleLarge: const TextStyle(
-            fontFamily: 'OpenSans',
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Colors.black,
-          ),
-          labelLarge: const TextStyle(
-            color: Colors.white
-          )
-        ),
+            titleLarge: const TextStyle(
+              fontFamily: 'OpenSans',
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+            labelLarge: const TextStyle(color: Colors.white)),
         appBarTheme: const AppBarTheme(
           titleTextStyle: TextStyle(
             fontFamily: 'OpenSans',
@@ -55,24 +52,24 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final List<Transaction> _transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Novo Tênis',
-      value: 250.0,
-      data: DateTime.now().subtract(const Duration(days: 3)),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Nova Camisa',
-      value: 39.90,
-      data: DateTime.now().subtract(const Duration(days: 4)),
-    ),
-    Transaction(
-      id: 't3',
-      title: 'calça social',
-      value: 80.0,
-      data: DateTime.now().subtract(const Duration(days: 30)),
-    ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Novo Tênis',
+    //   value: 250.0,
+    //   data: DateTime.now().subtract(const Duration(days: 3)),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'Nova Camisa',
+    //   value: 39.90,
+    //   data: DateTime.now().subtract(const Duration(days: 4)),
+    // ),
+    // Transaction(
+    //   id: 't3',
+    //   title: 'calça social',
+    //   value: 80.0,
+    //   data: DateTime.now().subtract(const Duration(days: 30)),
+    // ),
   ];
 
   List<Transaction> get _recentTransaction {
@@ -85,12 +82,12 @@ class _MyHomePageState extends State<MyHomePage> {
         .toList();
   }
 
-  _addTransaction(String title, double value) {
+  _addTransaction(String title, double value, DateTime date) {
     final newTransaction = Transaction(
       id: Random().nextDouble().toString(),
       title: title,
       value: value,
-      data: DateTime.now(),
+      data: date,
     );
 
     setState(
