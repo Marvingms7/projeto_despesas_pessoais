@@ -67,10 +67,12 @@ class _TransactionFormState extends State<TransactionForm> {
             Row(
               children: [
                 // ignore: unnecessary_null_comparison
-                Text(
-                  _selectedDate == null
-                      ? 'Nenhuma data selecionada'
-                      : 'Data selecionada: ${DateFormat('dd/MM/y').format(_selectedDate!)}',
+                Expanded(
+                  child: Text(
+                    _selectedDate == null
+                        ? 'Nenhuma data selecionada'
+                        : 'Data selecionada: ${DateFormat('dd/MM/y').format(_selectedDate!)}',
+                  ),
                 ),
                 TextButton(
                   onPressed: _showDatePicker,
@@ -84,7 +86,7 @@ class _TransactionFormState extends State<TransactionForm> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 35),
+                  padding: const EdgeInsets.all(1.0),
                   child: ElevatedButton(
                     onPressed: _submitForm,
                     style: ButtonStyle(
