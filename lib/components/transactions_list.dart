@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import '../models/transaction.dart';
 
-
 class TransactionList extends StatelessWidget {
-  const TransactionList(this.transactions, this.onRemove, {Key? key}) : super(key: key);
+  const TransactionList(this.transactions, this.onRemove, {Key? key})
+      : super(key: key);
 
   final void Function(String) onRemove;
 
@@ -13,7 +13,7 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 300,
+      height: MediaQuery.of(context).size.height * 0.5,
       child: transactions.isEmpty
           ? Column(
               children: [
