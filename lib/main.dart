@@ -15,7 +15,6 @@ class ExpensesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ThemeData tema = ThemeData();
-
     return MaterialApp(
       home: const MyHomePage(),
       theme: tema.copyWith(
