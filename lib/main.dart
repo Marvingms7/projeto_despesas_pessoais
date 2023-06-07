@@ -52,26 +52,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final List<Transaction> _transactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'Novo Tênis',
-    //   value: 250.0,
-    //   data: DateTime.now().subtract(const Duration(days: 3)),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'Nova Camisa',
-    //   value: 39.90,
-    //   data: DateTime.now().subtract(const Duration(days: 4)),
-    // ),
-    // Transaction(
-    //   id: 't3',
-    //   title: 'calça social',
-    //   value: 80.0,
-    //   data: DateTime.now().subtract(const Duration(days: 30)),
-    // ),
-  ];
+  final List<Transaction> _transactions = [];
+  bool _showChart = false;
 
   List<Transaction> get _recentTransaction {
     return _transactions
@@ -116,6 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    bool isLandscape = MediaQuery.of(context).orientation == Orientation.landscape;
+
     final appBar = AppBar(
       title: const Text(
         'Finanças',
@@ -137,10 +121,24 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            if (isLandscape)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Text('Exibir gráfico'),
+                Switch(value: _showChart, onChanged: (value) {
+                  setState(() {
+                    _showChart = value;
+                  });
+                }),
+              ],
+            ),
+            if(_showChart || !isLandscape)
             SizedBox(
-              height: availabelHeight * 0.3,
+              height: availabelHeight * (isLandscape ? 0.7 : 0.3),
               child: Chart(_recentTransaction),
             ),
+            if(!_showChart || !isLandscape)
             SizedBox(
               height: availabelHeight * 0.7,
               child: TransactionList(_transactions, _removeTransaction),
