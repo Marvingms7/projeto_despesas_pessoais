@@ -24,10 +24,6 @@ class Chart extends StatelessWidget {
           totalSun += recentTransaction[i].value;
         }
       }
-
-      print(DateFormat.E().format(weekDay)[0]);
-      print(totalSun);
-
       return {
         'day': DateFormat.E().format(weekDay)[0],
         'value': totalSun,
