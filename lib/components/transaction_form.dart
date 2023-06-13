@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:projeto_despesas_pessoais/components/adaptative_button.dart';
+import 'package:projeto_despesas_pessoais/components/adaptative_text_field.dart';
 
 class TransactionForm extends StatefulWidget {
   const TransactionForm(this.onSubmit, {Key? key}) : super(key: key);
@@ -59,16 +60,16 @@ class _TransactionFormState extends State<TransactionForm> {
           ),
           child: Column(
             children: [
-              TextField(
+              AdaptativeTextField(
+                label: 'Titulo',
                 controller: _titleController,
-                decoration: const InputDecoration(labelText: 'Titulo'),
-                onSubmitted: (_) => _submitForm(),
+                keyboardType: _submitForm(),
               ),
-              TextField(
+              AdaptativeTextField(
+                label: 'Valor R\$',
                 controller: _valueController,
                 keyboardType:
                     const TextInputType.numberWithOptions(decimal: true),
-                decoration: const InputDecoration(labelText: 'Valor R\$'),
                 onSubmitted: (_) => _submitForm(),
               ),
               Row(
